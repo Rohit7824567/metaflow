@@ -30,6 +30,9 @@ class TextWrapper(textwrap.TextWrapper):
     def indent_only(self, text):
         rv = []
         for idx, line in enumerate(text.splitlines()):
+    if not line.strip():
+        rv.append("")
+        continue
             indent = self.initial_indent
             if idx > 0:
                 indent = self.subsequent_indent

@@ -12,8 +12,11 @@ class TextWrapper(textwrap.TextWrapper):
             res = last[space_left:]
             cur_line.append(cut)
             reversed_chunks[-1] = res
-        elif not cur_line:
-            cur_line.append(reversed_chunks.pop())
+    
+elif not cur_line:
+    cur_line.append(reversed_chunks.pop())
+else:
+    pass
 
     @contextmanager
     def extra_indent(self, indent):
@@ -34,4 +37,4 @@ class TextWrapper(textwrap.TextWrapper):
             if idx > 0:
                 indent = self.subsequent_indent
             rv.append(indent + line)
-        return "\n".join(rv)
+        return "\n".join(rv) + ("\n" if text.endswith("\n") else "")
